@@ -10,8 +10,8 @@ const SearchResults = ({ searchResult }) => {
                 
                 return (
                     <>
-                        <Link to={`/movies/${imdbID}`}>
-                            <div key={imdbID}>
+                        <Link key={imdbID} to={`/movies/${imdbID}`}>
+                            <div>
                                 <h2>{Title}</h2>
                                 <h3>{Type}: {Year}</h3>
                             </div>

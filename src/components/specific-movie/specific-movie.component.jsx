@@ -26,9 +26,23 @@ const SpecificMovie = () => {
 
     return (
         <div>
-            <h1>{Title} <span>{Year}</span></h1> <img src={Poster}/>
+            <h1>{Title} <span>{Year}</span></h1> <img alt='Movie Poster' src={Poster}/>
             <h3><span>{Year}</span> : {Genre}</h3>
             <h3>{Director}</h3>
+            <div className="btn-group">
+                <button type="button" className="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Movie Info
+                </button>
+                <ul className="dropdown-menu">
+                    <li><p className="dropdown-item" >{Actors}</p></li>
+                    <li><p className="dropdown-item" >{BoxOffice}</p></li>
+                    <li><p className="dropdown-item" >{Plot}</p></li>
+                    <li><p className="dropdown-item" >{Runtime}</p></li>
+                    <li><p className="dropdown-item" >Rating:{imdbRating}</p></li>
+                    <li><p className="dropdown-item" >{Type}</p></li>
+                </ul>
+            </div>
+            <button>Add to WatchList</button>
         </div>
     )
 }
