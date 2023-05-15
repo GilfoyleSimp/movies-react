@@ -1,5 +1,5 @@
 import '../navigation/navigation.styles.css';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../contexts/user.context';
 import { signOut } from "firebase/auth";
@@ -8,6 +8,7 @@ import { auth } from '../../firebase';
 const Navigation = () => {
 
     const { currentUser, setCurrentUser } = useContext(UserContext)
+    const navigate = useNavigate()
 
     const logout = async () => {
         try {
@@ -19,35 +20,43 @@ const Navigation = () => {
     }
 
     return (
-        <div>
-            <div>
-                <Link to='/'>Home</Link>
-                <Link to='/about'>About</Link>
-                {currentUser ? (
-                    <button onClick={logout}> Logout </button>
-                ) : <Link to='/auth'>SignIn</Link>}
+        <div className='my-nav-container'>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary" id='nav-container'>
+                <div class="container-fluid">
+                    <Link class="navbar-brand" style={{fontWeight:'bold'}} to='/'>myIMDB</Link>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <div class="nav-link active" aria-current="page">
+                                    <Link className='my-nav-link' to='/watchlist'>Watch List</Link>
+                                </div>
+                            </li>
 
-                {currentUser ? (
-
-                    <div>
-                        <h4>{currentUser.displayName}</h4>
-                        <img alt='User display pic' src={currentUser.photoUrl} style={{ width: '40px', height: '40px' }} />
+                        </ul>
+                        <li style={{ float: 'right' }} class="nav-item">
+                            <div class="nav-link active" aria-current="page">
+                                <Link className='my-nav-link' to='/about'>About</Link>
+                            </div>
+                        </li>
+                        {currentUser ? (
+                            <li style={{ float: 'right' }} class="nav-item">
+                                <div style={{ cursor: 'pointer' }} class="nav-link active" aria-current="page">
+                                    <div onClick={logout} className='my-nav-link' to='/auth'>LogOut</div>
+                                </div>
+                            </li>
+                        ) : <li style={{ float: 'right' }} class="nav-item">
+                            <div class="nav-link active" aria-current="page">
+                                <Link className='my-nav-link' to='/auth'>Sign In</Link>
+                            </div>
+                        </li>}
+                        
                     </div>
-                ) : null}
+                </div>
+            </nav>
 
-            </div>
-            <div className="btn-group">
-                <button type="button" className="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i className="fa-solid fa-bars"></i>
-                </button>
-                <ul className="dropdown-menu">
-                    <li><button className="dropdown-item" >Movie Watch List</button></li>
-                    <li><button className="dropdown-item" >Another action</button></li>
-                    <li><button className="dropdown-item" >Something else here</button></li>
-                    <li><hr className="dropdown-divider"/></li>
-                    <li><button onClick={logout} className="dropdown-item" href="#">LogOut</button></li>
-                </ul>
-            </div>
             <Outlet />
         </div>
     )

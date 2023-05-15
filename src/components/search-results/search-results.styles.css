@@ -1,0 +1,30 @@
+.search-result-movie-item{
+    border: 1px solid darkgray;
+    padding: 15px 0;
+    border-radius: 10px;
+    min-width: 80%;
+    max-width: 80%;
+    margin:40px;
+}
+
+.search-result-movie-item:hover{
+    background-color: #ffc107;
+    transition: ease 0.5s;
+}
+
+.search-results-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.movie-item-items{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color:black;
+    text-decoration: none;
+}

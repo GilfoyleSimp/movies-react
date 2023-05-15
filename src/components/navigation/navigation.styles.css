@@ -1,0 +1,36 @@
+.my-nav-link{
+    text-decoration: none;
+    color: black;
+    
+}
+
+.my-nav-link:hover{
+    font-weight: bold;
+}
+
+li{
+    list-style-type: none;
+}
+
+@media (max-width: 480px){
+    .nav-item{
+        display: contents;
+    }
+}
+
+.nav-item{
+    padding: 0 10px;
+}
+.my-nav-container{
+        top: 0;
+        width: 100%;
+        z-index: 9999;
+}
+
+
+
+
+#nav-container{
+    background-color: #ffc107!important;
+}
+

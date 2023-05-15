@@ -1,0 +1,18 @@
+.spec-movie-container {
+    margin: 10px;
+    text-align: center;
+}
+
+.spec-movie-container{
+
+}
+
+.dropdown-menu{
+    position:relative;
+}
+
+.spec-movie-poster{
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #4f4c4c;
+    margin-bottom: 15px;
+}
